@@ -9,7 +9,7 @@ from sklearn.base import defaultdict
 hostname='localhost'
 database='postgres'
 username='postgres'
-pwd='harsha$23'
+pwd='---'
 port_id=5434
 adult_path="census+income/adult.data"
 
@@ -288,6 +288,8 @@ def shared_op2(check_columns,measures,Agg_func,db_conn,db_cursor):
         plot(f,m,a,db_conn)
         print("combined-plots")
         shared_tr(f,m,a,db_conn)
+        
+#Combined Sharing Optimization for Multiple Aggregrate attributes and also combination of reference and specified query. 
 
 def shared_op3(check_columns,measures,Agg_func,db_conn,db_cursor,dbname):
     util_score2=[]
@@ -355,7 +357,8 @@ def shared_op3(check_columns,measures,Agg_func,db_conn,db_cursor,dbname):
         script_insert_utility= f"insert into util_score_socombined1_{db_name} (utility_score, M, A, F) values ({util_score2[i]}, '{util_score_m2[i]}', '{util_score_a2[i]}', '{util_score_f2[i]}')"
         db_cursor.execute(script_insert_utility)'''
     return util_score2
-
+    
+#Pruning Optimization 
 def prune(m, top_views, mean, N, k):
     if m == 1:
         return top_views
